@@ -1,0 +1,10 @@
+{
+  "sqltools.connections": [
+    {
+      "database": "${workspaceFolder}\\server/tabtracker.sqlite",
+      "dialect": "SQLite",
+      "name": "tabtracker"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}

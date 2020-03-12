@@ -6,7 +6,7 @@
     tile
   >
     <v-toolbar dense>
-      <v-toolbar-title>Register</v-toolbar-title>
+      <v-toolbar-title>Login</v-toolbar-title>
     </v-toolbar>
 
     <v-form
@@ -34,9 +34,9 @@
       <v-btn
           color="success"
           class="mr-4"
-          @click="register"
+          @click="login"
       >
-        Register
+        Login
       </v-btn>
       </v-container>
 
@@ -48,7 +48,7 @@
 import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
-  name: 'Register',
+  name: 'login',
   data () {
     return {
       email: '',
@@ -57,14 +57,11 @@ export default {
     }
   },
   watch: {
-    email (value) {
-      console.log('email has changed', value)
-    }
   },
   methods: {
-    async register () {
+    async login () {
       try {
-        const resp = await AuthenticationService.register({
+        const resp = await AuthenticationService.login({
           email: this.email,
           password: this.password
         })
