@@ -1,0 +1,29 @@
+<template>
+  <v-container>
+    <v-card
+    class="mx-auto"
+    max-width="600"
+  >
+    <v-toolbar dark color="deep-purple lighten-3">
+      <v-toolbar-title>{{title}}</v-toolbar-title>
+    </v-toolbar>
+    <slot name="content-1">
+      This is a image content slot
+    </slot>
+    <div class="pt-4 pb-4 pl-2 pr-2">
+      <slot name="content-inside-div">
+        no slot content defined
+      </slot>
+    </div>
+  </v-card>
+  </v-container>
+</template>
+
+<script>
+export default {
+  name: 'panel',
+  props: [
+    'title'
+  ]
+}
+</script>
