@@ -14,13 +14,23 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <router-link to="login">
-        <v-btn text dark>
+        <v-btn text dark v-if="!$store.state.isUserLoggedIn">
           Login
         </v-btn>
       </router-link>
       <router-link to="register">
-        <v-btn text dark>
+        <v-btn text dark v-if="!$store.state.isUserLoggedIn">
           Signup
+        </v-btn>
+      </router-link>
+      <router-link to="register">
+        <v-btn
+          text
+          dark
+          v-if="$store.state.isUserLoggedIn"
+          @click="logout"
+        >
+          Logout
         </v-btn>
       </router-link>
     </v-toolbar-items>
@@ -29,6 +39,12 @@
 
 <script>
 export default {
-  name: 'page-header'
+  name: 'page-header',
+  methods: {
+    logout () {
+      this.$store.dispatch('setToken', null)
+      this.$store.dispatch('setUser', null)
+    }
+  }
 }
 </script>
