@@ -24,5 +24,32 @@ module.exports = {
         error: 'An error ocurred while fetching the songs'
       })
     }
+  },
+
+  async show (req, res) {
+    try {
+      const song = await Song.findByPk(req.params.songId);
+      res.send(song);
+    } catch (error) {
+      res.status(500).send({
+        error: error.message//'An error ocurred while fetching the songs'
+      })
+    }
+  },
+
+  async editSong (req, res) {
+    try {
+      console.log('from controller ---->', req.params.songId);
+      const song = await Song.update(req.body, {
+        where: {
+          id: req.params.songId
+        }
+      });
+      res.send(song);
+    } catch (error) {
+      res.status(500).send({
+        error: error.message//'An error ocurred while fetching the songs'
+      });
+    }
   }
 }

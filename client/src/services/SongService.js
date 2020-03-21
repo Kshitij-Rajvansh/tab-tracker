@@ -6,5 +6,11 @@ export default {
   },
   getAllSongs (credentials) {
     return API().get('songs')
+  },
+  show (songId) {
+    return API().get(`songs/${songId}`)
+  },
+  put (songId) {
+    return API().put(`songs/${songId}/edit`)
   }
 }

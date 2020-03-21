@@ -27,14 +27,16 @@
           <v-card-subtitle>{{song.artist}}</v-card-subtitle>
 
           <v-card-actions>
-            <v-btn text>Listen Now</v-btn>
+            <v-btn
+              class="deep-purple lighten-3"
+              @click="navigateTo(`/song/${song.id}`)"
+             >
+              View Song
+            </v-btn>
           </v-card-actions>
         </v-img>
       </v-card>
     </v-container>
-    <v-btn slot="content-inside-div">
-      More Songs
-    </v-btn>
   </panel>
 </template>
 

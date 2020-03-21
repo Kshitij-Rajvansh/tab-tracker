@@ -1,6 +1,7 @@
 <template>
   <v-container>
     <v-card
+    id="panel"
     class="mx-auto"
     max-width="800"
   >
@@ -29,3 +30,7 @@ export default {
   ]
 }
 </script>
+
+<style scoped>
+
+</style>

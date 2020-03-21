@@ -1,50 +1,43 @@
 <template>
-  <v-card
-    color="grey lighten-4"
-    flat
-    height="200px"
-    tile
-  >
-    <v-toolbar dense>
-      <v-toolbar-title>Register</v-toolbar-title>
-    </v-toolbar>
+  <panel title="Register">
+      <v-form
+        slot="content-1"
+        ref="form"
+        lazy-validation
+      >
 
-    <v-form
-      ref="form"
-      lazy-validation
-    >
-
-      <v-container>
+        <v-container>
+          <v-text-field
+            label="Email"
+            v-model="email"
+          >
+        </v-text-field>
+        <br>
         <v-text-field
-          label="Email"
-          v-model="email"
+            label="Password"
+            type="password"
+            v-model="password"
+            autocomplete="new-password"
         >
-      </v-text-field>
-      <br>
-      <v-text-field
-          label="Password"
-          type="password"
-          v-model="password"
-          autocomplete="new-password"
-      >
-      </v-text-field>
-      <br>
-        <div class="danger-alert" v-html="error" />
-      <br>
-      <v-btn
-          color="success"
-          class="mr-4"
-          @click="register"
-      >
-        Register
-      </v-btn>
-      </v-container>
+        </v-text-field>
+        <br>
+          <div class="danger-alert" v-html="error" />
+        <br>
+        <v-btn
+            color="success"
+            class="mr-4"
+            @click="register"
+        >
+          Register
+        </v-btn>
+        </v-container>
 
-    </v-form>
-  </v-card>
+      </v-form>
+    </panel>
 </template>
 
 <script>
+import Panel from '@/components/ReusableComponents/Panel'
 import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
@@ -60,6 +53,9 @@ export default {
     email (value) {
       console.log('email has changed', value)
     }
+  },
+  components: {
+    Panel
   },
   methods: {
     async register () {

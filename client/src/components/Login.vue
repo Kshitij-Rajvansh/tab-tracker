@@ -1,18 +1,10 @@
 <template>
-  <v-card
-    color="grey lighten-4"
-    flat
-    height="200px"
-    tile
-  >
-    <v-toolbar dense>
-      <v-toolbar-title>Login</v-toolbar-title>
-    </v-toolbar>
-
-    <v-form
-      ref="form"
-      lazy-validation
-    >
+    <panel title="Login">
+      <v-form
+        slot="content-1"
+        ref="form"
+        lazy-validation
+      >
 
       <v-container>
         <v-text-field
@@ -41,10 +33,11 @@
       </v-container>
 
     </v-form>
-  </v-card>
+    </panel>
 </template>
 
 <script>
+import Panel from '@/components/ReusableComponents/Panel'
 import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
@@ -58,6 +51,9 @@ export default {
   },
   watch: {
   },
+  components: {
+    Panel
+  },
   methods: {
     async login () {
       try {
@@ -67,6 +63,7 @@ export default {
         })
         this.$store.dispatch('setToken', resp.data.token)
         this.$store.dispatch('setUser', resp.data.user)
+        this.$router.push('/')
       } catch (error) {
         this.error = error.response.data.error
       }
